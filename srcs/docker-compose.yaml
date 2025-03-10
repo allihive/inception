@@ -1,34 +1,31 @@
+version: '3'
 services:
 	mariadb:
 		container_name: mariadb_cont
 		build: ./requirements/mariadb
-		image: mariadb:2.7
+		image: mariadb:alli
 		volumes:
 			- mariadb:/var/lib/mysql
 		networks: 
 			- default
 		restart: always
-	wordpress:
-		container_name: wordpress-cont
-		build:./wordpress
-		volumes: wordpress_files:/var/www/html
-		networks:
-			- wordpress_network
-		depends_on:
-			- mariadb
-	nginx:
-		build:
-			context: ./nginx
-		container_name: nginx-cont
-		ports:
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpasword
+      MYSQL_DATABASE: mydatabase
+  wordpress:
+    container_name: wordpress-cont
+    build:./wordpress
+    volumes: wordpress_files:/var/www/html
+    networks:
+      - wordpress_network
+    depends_on:
+      - mariadb
+  nginx:
+    container_name: nginx-cont
+    build:
+      context: ./nginx
+
+    ports:
 			- "443:443" # for HTTPS
-		volumes:
-			- ./niginx/certs:/etc/nginx/certs # SSL certs into the container
-			- ./nginx/nginx.con:/etc/nginx/nginx.conf
-			- wordpress_files:/var/www/html
-		networks:
-			- wordpress_network
-		depends_on:
-			- wordpress
 volumes:
 	mariadb-data:

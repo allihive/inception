@@ -1,7 +1,6 @@
 
 services:
 
-
 	mariadb:
 		container_name: mariadb-cont
 		build: ./requirements/mariadb
@@ -29,7 +28,7 @@ services:
     build:
       context: ./nginx
     ports:
-		- "3306:3306" # for mariadb?
+		- "443:443" # for HHTPs
     networks:
       - inception_net
 

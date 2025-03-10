@@ -1,31 +1,41 @@
-version: '3'
+
 services:
+
+
 	mariadb:
-		container_name: mariadb_cont
+		container_name: mariadb-cont
 		build: ./requirements/mariadb
 		image: mariadb:alli
 		volumes:
 			- mariadb:/var/lib/mysql
 		networks: 
-			- default
+			- inception_net
 		restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpasword
-      MYSQL_DATABASE: mydatabase
+		environment:
+			MYSQL_ROOT_PASSWORD: rootpasword
+			MYSQL_DATABASE: mydatabase
+
   wordpress:
     container_name: wordpress-cont
     build:./wordpress
     volumes: wordpress_files:/var/www/html
     networks:
-      - wordpress_network
+      - inception_net
     depends_on:
       - mariadb
+
   nginx:
     container_name: nginx-cont
     build:
       context: ./nginx
-
     ports:
-			- "443:443" # for HTTPS
+		- "3306:3306" # for mariadb?
+    networks:
+      - inception_net
+
 volumes:
 	mariadb-data:
+
+networks:
+	inception_net:
+		driver: bridge

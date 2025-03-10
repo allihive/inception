@@ -12,7 +12,7 @@ down:
 	cs srcs && docker compose down
 
 clean: 
-	make down
+	docker-compose -f srcs/docker-compose.yml down --rmi all -v
 
 fclean:
 	make clean

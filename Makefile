@@ -16,6 +16,10 @@ clean:
 
 fclean:
 	make clean
+	sudo rm -rf /home/alli/data/mariadb
+	sudo rm -rf /home/alli/data/wordpress
+	sudo rm -rf /home/alli/data
+	docker system prune -f --volumes
 	
 all:
 	make $(NAME)

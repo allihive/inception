@@ -1,4 +1,4 @@
-[mysqld]		#the settings are applied to the database server which creates the daemon
+[mysqld]					#the settings are applied to the database server which creates the daemon
 datadir = /var/lib/mysql	#where data is stored
 basedir = /usr				#where mariadb is installed
 socket = /run/mysqld/mysqld.sock

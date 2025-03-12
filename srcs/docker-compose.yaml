@@ -14,42 +14,42 @@ services:
         - ".env"
 
 
-  wordpress:
-    container_name: wordpress-cont
-    build: ./requirements/wordpress
-    volumes: 
-      - wordpress-data:/var/www/html
-    networks:
-      - inception_net
-    depends_on:
-      - mariadb
+  # wordpress:
+  #   container_name: wordpress-cont
+  #   build: ./requirements/wordpress
+  #   volumes: 
+  #     - wordpress-data:/var/www/html
+  #   networks:
+  #     - inception_net
+  #   depends_on:
+  #     - mariadb
 
-  nginx:
-    container_name: nginx-cont
-    build: ./requirements/nginx
-    ports:
-      - "443:443" # for HHTPs
-    networks:
-    - inception_net
+  # nginx:
+  #   container_name: nginx-cont
+  #   build: ./requirements/nginx
+  #   ports:
+  #     - "443:443" # for HHTPs
+  #   networks:
+  #   - inception_net
 
-volumes:
-  mariadb-data:
-    name: mariadb-vol
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/alli/data/mariadb #setting a custom storage path
+# volumes:
+#   mariadb-data:
+#     name: mariadb-vol
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /home/alli/data/mariadb #setting a custom storage path
 
-  wordpress-data:
-    name: wp-vol
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/alli/data/wordpress #setting a custom storage path
+#   wordpress-data:
+#     name: wp-vol
+#     driver: local
+#     driver_opts:
+#       type: none
+#       o: bind
+#       device: /home/alli/data/wordpress #setting a custom storage path
 
 
-networks:
-  inception_net:
-    driver: bridge
+# networks:
+#   inception_net:
+#     driver: bridge

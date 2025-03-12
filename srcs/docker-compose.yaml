@@ -39,6 +39,13 @@ volumes:
       type: none
       o: bind
       device: /home/alli/data/mariadb #setting a custom storage path
+  wordpress-data:
+    name: wp-vol
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/alli/data/wordpress #setting a custom storage path
 
 
 networks:

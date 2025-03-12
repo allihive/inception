@@ -4,7 +4,7 @@ services:
   mariadb:
       container_name: mariadb-cont
       build: 
-        context: ./requirements/mariadb
+        context: ./srcs/requirements/mariadb
         dockerfile: Dockerfile
       image: mariadb:alli
       volumes:

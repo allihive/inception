@@ -14,6 +14,9 @@ all: mariadb_data
 images:
 	docker-compose -f srcs/docker-compose.yaml build
 
+mariadb_data:
+	mkdir -p /home/mkorpela/data/mariadb
+
 up:
 	docker compose -f srcs/docker-compose.yaml up -d
 

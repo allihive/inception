@@ -16,7 +16,7 @@ services:
 
   wordpress:
     container_name: wordpress-cont
-    build: ./wordpress
+    build: ./requirements/wordpress
     volumes: wordpress_files:/var/www/html
     networks:
       - inception_net
@@ -25,8 +25,7 @@ services:
 
   nginx:
     container_name: nginx-cont
-    build:
-    context: ./nginx
+    build: ./requirements/nginx
     ports:
       - "443:443" # for HHTPs
     networks:

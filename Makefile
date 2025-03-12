@@ -2,7 +2,7 @@ NAME = Inception
 DOCKERFILES = $(addprefix srcs/requirements/, mariadb/Dockerfile ) # nginx/Dockerfile wordpress/Dockerfile
 
 DOCKER_COMPOSE = srcs/docker-compose.yaml
-
+$(info $(DOCKERFILES))
 .PHONY: $(NAME)
 
 $(NAME): $(DOCKERFILES) $(DOCKER_COMPOSE)

@@ -7,8 +7,8 @@ services:
       image: mariadb:alli
       volumes:
           - mariadb-data:/var/lib/mysql
-      networks: 
-          - inception_net
+      # networks: 
+      #     - inception_net
       restart: always
       env_file: 
         - ".env"
@@ -32,14 +32,14 @@ services:
   #   networks:
   #   - inception_net
 
-# volumes:
-#   mariadb-data:
-#     name: mariadb-vol
-#     driver: local
-#     driver_opts:
-#       type: none
-#       o: bind
-#       device: /home/alli/data/mariadb #setting a custom storage path
+volumes:
+  mariadb-data:
+    name: mariadb-vol
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/alli/data/mariadb #setting a custom storage path
 
 #   wordpress-data:
 #     name: wp-vol

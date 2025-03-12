@@ -1,4 +1,6 @@
 FROM alpine:3.20.0
+FROM mariadb:10.5-alpine
+
 
 #default port for mariadb
 EXPOSE 3306 

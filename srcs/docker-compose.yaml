@@ -3,8 +3,7 @@ services:
 
   mariadb:
       container_name: mariadb-cont
-      build: 
-        context: ./requirements/mariadb
+      build: ./requirements/mariadb
         dockerfile: Dockerfile
       image: mariadb:alli
       volumes:
@@ -12,9 +11,9 @@ services:
       networks: 
           - inception_net
       restart: always
-      environment:
-          MYSQL_ROOT_PASSWORD: rootpasword
-          MYSQL_DATABASE: mydatabase
+      env_file: 
+        - ".env"
+
 
   wordpress:
     container_name: wordpress-cont
@@ -42,6 +41,7 @@ volumes:
       type: none
       o: bind
       device: /home/alli/data/mariadb #setting a custom storage path
+
   wordpress-data:
     name: wp-vol
     driver: local

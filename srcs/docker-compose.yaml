@@ -3,7 +3,7 @@ services:
 
   mariadb:
       container_name: mariadb-cont
-      build: ./srcs/requirements/mariadb
+      build: ./requirements/mariadb
       image: mariadb:alli
       volumes:
           - mariadb-data:/var/lib/mysql

@@ -1,12 +1,21 @@
-NAME = Inception
-DOCKERFILES = $(addprefix srcs/requirements/, mariadb/Dockerfile ) # nginx/Dockerfile wordpress/Dockerfile
+# NAME = Inception
+# DOCKERFILES = $(addprefix srcs/requirements/, mariadb/Dockerfile ) # nginx/Dockerfile wordpress/Dockerfile
 
-DOCKER_COMPOSE = srcs/docker-compose.yaml
-$(info $(DOCKERFILES))
-.PHONY: $(NAME)
+# DOCKER_COMPOSE = srcs/docker-compose.yaml
 
-$(NAME): $(DOCKERFILES) $(DOCKER_COMPOSE)
-	cd srcs && docker compose up -d
+# .PHONY: $(NAME)
+
+# $(NAME): $(DOCKERFILES) $(DOCKER_COMPOSE)
+# 	cd srcs && docker compose up -d
+all: mariadb_data 
+	make images
+	make up
+
+images:
+	docker-compose -f srcs/docker-compose.yaml build
+
+up:
+	docker compose -f srcs/docker-compose.yaml up -d
 
 down:
 	cd srcs && docker compose down

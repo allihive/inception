@@ -17,7 +17,8 @@ services:
   wordpress:
     container_name: wordpress-cont
     build: ./requirements/wordpress
-    volumes: wordpress_files:/var/www/html
+    volumes: 
+      - wordpress_files:/var/www/html
     networks:
       - inception_net
     depends_on:

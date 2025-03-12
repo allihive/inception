@@ -3,7 +3,9 @@ services:
 
   mariadb:
       container_name: mariadb-cont
-      build: ./requirements/mariadb
+      build: 
+        context: ./requirements/mariadb
+        dockerfile: Dockerfile
       image: mariadb:alli
       volumes:
           - mariadb-data:/var/lib/mysql

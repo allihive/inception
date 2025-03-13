@@ -18,7 +18,7 @@ echo "Adding SSL configuration"
 echo "ssl_certificate $CERTS_CRT;" >> /etc/nginx/snippets/self-signed.conf
 echo "ssl_certificate_key $CERTS_KEY;" >> /etc/nginx/snippets/self-signed.conf
 
-#ensuring www-data user exists
+#creating user and adding them to a group 
 adduser -D -H -s /sbin/nologin -g www-data www-data
 
 echo "Starting NGINX"

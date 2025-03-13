@@ -15,5 +15,3 @@ COPY ./tools/nginx_script /usr/local/bin
 RUN chmod +x /usr/local/bin/nginx_script.sh
 
 ENTRYPOINT ["/usr/local/bin/nginx_script.sh"]
-
-# expose ports for http and https

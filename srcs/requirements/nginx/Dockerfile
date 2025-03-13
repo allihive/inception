@@ -6,10 +6,14 @@ RUN apk update && apk add nginx openssl
 
 RUN mkdir -p /etc/nginx/ssl
 
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
-COPY ./tools/nginx_script /usr/local/bin
-COPY ./html /usr/shar/nginx/html
+COPY ./conf/self-signed.conf /etc/nginx/snippets/self-signed.conf
 
-ENTRYPOINT [/usr/local/bin/nginx_script.sh]
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
+RUN chmod 644 /etc/nginx/nginx.conf
+
+COPY ./tools/nginx_script /usr/local/bin
+RUN chmod +x /usr/local/bin/nginx_script.sh
+
+ENTRYPOINT ["/usr/local/bin/nginx_script.sh"]
 
 # expose ports for http and https

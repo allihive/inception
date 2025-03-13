@@ -7,8 +7,8 @@ if test -f $CERTS_KEY; then
 
 else
 	echo "No, generating now..."
-	openssl req -x509 -nodes -days 365 -newkey \
-		-keyout "$CERTS_KEY" -out "$CERTS_CRT" \
+	openssl req -x509 -nodes -days 365 -newkey \  #generating signed cert no passphrase valid for 1 year
+		-keyout "$CERTS_KEY" -out "$CERTS_CRT" \  #where to save the key
 		-subj "/C=FI/ST=Uusimaa/L=Helsinki/O=42/OU=Hive/CN=alli.42.fr"
 	echo "SSL certificate generated"
 
@@ -19,7 +19,7 @@ echo "ssl_certificate $CERTS_CRT;" >> /etc/nginx/snippets/self-signed.conf
 echo "ssl_certificate_key $CERTS_KEY;" >> /etc/nginx/snippets/self-signed.conf
 
 #ensuring www-data user exists
-adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
+adduser -D -H -s /sbin/nologin -g www-data www-data
 
 echo "Starting NGINX"
 exec -g 'daemon off;'

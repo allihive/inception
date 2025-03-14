@@ -29,6 +29,8 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443" # for HHTPs
+    volumes:
+      - wordpress-data: /var/www/html
     networks:
     - inception_net
 

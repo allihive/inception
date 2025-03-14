@@ -9,7 +9,7 @@ else
 	echo "No, generating now..."
 	openssl req -x509 -nodes -days 365 -newkey \  #generating signed cert no passphrase valid for 1 year
 		-keyout "$CERTS_KEY" -out "$CERTS_CRT" \  #where to save the key
-		-subj "/C=FI/ST=Uusimaa/L=Helsinki/O=42/OU=Hive/CN=alli.42.fr"
+		-subj "/C=FI/ST=Uusimaa/L=Helsinki/O=42/OU=Hive/CN=${DOMAIN_NAME}"
 	echo "SSL certificate generated"
 
 fi

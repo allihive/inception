@@ -11,7 +11,7 @@ COPY ./conf/self-signed.conf /etc/nginx/snippets/self-signed.conf
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 RUN chmod 644 /etc/nginx/nginx.conf
 
-COPY ./tools/nginx_script /usr/local/bin
+COPY ./tools/nginx_script.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/nginx_script.sh
 
 ENTRYPOINT ["/usr/local/bin/nginx_script.sh"]

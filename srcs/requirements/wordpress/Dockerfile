@@ -2,7 +2,7 @@ FROM alpine:3.20.0
 
 EXPOSE 9000
 
-RUN apk update && apk add --no-cache mariadb-client \
+RUN apk update && apk add --no-cache mariadb-client curl \
 		php83 \
 		php83-fpm \
 		# for wordpress to interact with spl

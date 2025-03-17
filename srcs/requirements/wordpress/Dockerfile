@@ -58,4 +58,4 @@ EXPOSE 9000
 
 RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
 
-CMD ["/tmp/wordpress-script.sh"]
+# CMD ["/tmp/wordpress-script.sh"]

@@ -31,7 +31,10 @@ RUN apk update && apk add mariadb-client \
 		php83-iconv \
 # 		#for downloading wordpress
 		wget
+
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
+COPY ./tools/wordpress-script.sh /tmp/wordpress-script.sh
+RUN chmod +x /tmp/wordpress-script.sh
 
 RUN mkdir -p /var/www/wp /var/www/html
 

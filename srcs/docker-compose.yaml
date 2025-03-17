@@ -29,10 +29,10 @@ services:
     build: ./requirements/nginx
     ports:
       - "443:443" # for HHTPs
-    # volumes:
-    #   - wordpress-data: /var/www/html
-    networks:
-    - inception_net
+    volumes:
+      - wordpress-data: /var/www/html
+    # networks:
+    # - inception_net
 
 volumes:
   mariadb-data:
@@ -43,13 +43,13 @@ volumes:
       o: bind
       device: /home/alli/data/mariadb #setting a custom storage path
 
-#   wordpress-data:
-#     name: wp-vol
-#     driver: local
-#     driver_opts:
-#       type: none
-#       o: bind
-#       device: /home/alli/data/wordpress #setting a custom storage path
+  wordpress-data:
+    name: wp-vol
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/alli/data/wordpress #setting a custom storage path
 
 
 # networks:

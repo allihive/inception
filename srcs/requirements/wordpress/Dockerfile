@@ -37,6 +37,9 @@ COPY ./tools/wordpress-script.sh /tmp/wordpress-script.sh
 RUN chmod +x /tmp/wordpress-script.sh
 
 RUN mkdir -p /var/www/wp /var/www/html
+RUN chown -R 755 /var/www/html
+
+ENTRYPOINT ["./tmp/wordpress-script.sh"]
 
 # FROM alpine:3.20.5
 

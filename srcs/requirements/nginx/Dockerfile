@@ -2,7 +2,7 @@ FROM alpine:3.20.0
 
 EXPOSE 443
 
-RUN apk update && apk add --no-cache nginx openssl
+RUN apk update && apk add nginx openssl
 
 RUN mkdir -p /etc/nginx/ssl
 

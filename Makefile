@@ -21,8 +21,8 @@ fclean: clean
 	docker system prune -f --volumes
 	
 all:
-	mkdir -p /home/alli/data/mariadb
-	mkdir -p /home/alli/data/wordpress
+	sudo mkdir -p /home/alli/data/mariadb
+	sudo mkdir -p /home/alli/data/wordpress
 	$(NAME)
 
 

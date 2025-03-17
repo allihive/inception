@@ -25,8 +25,8 @@ services:
       - mariadb
     env_file:
       - .env
-    networks:
-      -inception_net
+    # networks:
+    #   -inception_net
 
   nginx:
     container_name: nginx-cont
@@ -40,8 +40,8 @@ services:
       - wordpress
     env_file:
       - .env
-    networks:
-    - inception_net
+    # networks:
+    # - inception_net
     restart: always
 
 volumes:
@@ -62,6 +62,6 @@ volumes:
       device: /home/alli/data/wordpress #setting a custom storage path
 
 
-networks:
-  inception_net:
-    driver: bridge
+# networks:
+#   inception_net:
+#     driver: bridge

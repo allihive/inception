@@ -6,7 +6,7 @@ DOCKER_COMPOSE = srcs/docker-compose.yaml
 .PHONY: $(NAME)
 
 $(NAME): $(DOCKER_COMPOSE)
-	cd srcs && docker compose up -d
+	cd srcs && docker compose up --build -d
 
 down:
 	cd srcs && docker compose down
@@ -21,6 +21,9 @@ fclean: clean
 	docker system prune -f --volumes
 	
 all:
+	mkdir -p /home/alli/data/mariadb
+	mkdir -p /home/alli/data/wordpress
 	$(NAME)
+
 
 re: fclean all

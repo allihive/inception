@@ -14,25 +14,35 @@ services:
         - ".env"
 
 
-  # wordpress:
-  #   container_name: wordpress-cont
-  #   build: ./requirements/wordpress
-  #   volumes: 
-  #     - wordpress-data:/var/www/html
-  #   networks:
-  #     - inception_net
-  #   depends_on:
-  #     - mariadb
+  wordpress:
+    container_name: wordpress-cont
+    build: ./requirements/wordpress
+    volumes: 
+      - wordpress-data:/var/www/html
+    networks:
+      - inception_net
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+    networks:
+      -inception_net
 
   nginx:
     container_name: nginx-cont
+    image: nginx:alli
     build: ./requirements/nginx
     ports:
       - "443:443" # for HHTPs
     volumes:
       - wordpress-data:/var/www/html
-    # networks:
-    # - inception_net
+    depends_on:
+      - wordpress
+    env_file:
+      - .env
+    networks:
+    - inception_net
+    restart: always
 
 volumes:
   mariadb-data:
@@ -52,6 +62,6 @@ volumes:
       device: /home/alli/data/wordpress #setting a custom storage path
 
 
-# networks:
-#   inception_net:
-#     driver: bridge
+networks:
+  inception_net:
+    driver: bridge

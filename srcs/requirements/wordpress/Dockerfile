@@ -10,7 +10,7 @@ RUN apk update && apk add mariadb-client \
 # 		# needed for rest api functionality
 		php83-json \
 # 		# for https and secure communications
-# 		php83-openssl \
+		php83-openssl \
 # 		# login session and authentication
 # 		php83-session \
 # 		# php applications and libraries into a single file phar archives (can bundle into a single ffile)
@@ -18,7 +18,7 @@ RUN apk update && apk add mariadb-client \
 # 		#enables api calls
 		php83-curl \
 # 		#required for xml parsing
-# 		php83-dom \
+		php83-dom \
 # 		#for php performance optimizations
 # 		php83-opcache \
 # 		#mutibyte encoding

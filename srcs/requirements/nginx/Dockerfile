@@ -1,4 +1,4 @@
-FROM alpine3.20.0
+FROM alpine:3.20.0
 
 EXPOSE 443
 

@@ -30,7 +30,7 @@ services:
     ports:
       - "443:443" # for HHTPs
     volumes:
-      - wordpress-data:/var/www/html
+      - wordpress-vol:/var/www/html
     # networks:
     # - inception_net
 
@@ -44,7 +44,7 @@ volumes:
       device: /home/alli/data/mariadb #setting a custom storage path
 
   wordpress-data:
-    name: wp-vol
+    name: wordpress-vol
     driver: local
     driver_opts:
       type: none

@@ -24,7 +24,7 @@ services:
       - mariadb
     env_file:
       - .env
-    network: 
+    networks: 
       - inception_net
     restart: always
 

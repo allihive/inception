@@ -7,8 +7,7 @@ services:
       image: mariadb:alli
       volumes:
           - mariadb-data:/var/lib/mysql
-      networks: 
-          - inception_net
+      networks: inception_net
       restart: always
       env_file: 
         - ".env"
@@ -24,8 +23,7 @@ services:
       - mariadb
     env_file:
       - .env
-    networks:
-      -inception_net
+    network: inception_net
     restart: always
 
   nginx:
@@ -40,8 +38,7 @@ services:
       - wordpress
     env_file:
       - .env
-    networks:
-    - inception_net
+    networks: inception_net
     restart: always
 
 volumes:

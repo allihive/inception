@@ -6,9 +6,9 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	echo "Initializing MariaDB..."
 	mariadb-install-db --basedir=/usr--user=mysql --datadir=/var/lib/mysql
 
-	echo "Starting MariaDB..."
-	mysqld_safe --data=var/lib/mysql & #start mariadb in the background
-	sleep 5
+	# echo "Starting MariaDB..."
+	# mysqld_safe --data=var/lib/mysql & #start mariadb in the background
+	# sleep 5
 
 	echo "Creating WordPress database and user..."
 	mysqld --user=mysql --bootstrap << EOF
@@ -26,4 +26,6 @@ EOF
 	
 fi
 
-exec mysqld --defaults-file=/etc/my.cnf.d/mariadb-server.cnf --user=mysql
+echo "Starting MariaDB..."
+exec mysqld_safe --user=mysql
+# exec mysqld --defaults-file=/etc/my.cnf.d/mariadb-server.cnf --user=mysql

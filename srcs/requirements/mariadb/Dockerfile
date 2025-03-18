@@ -7,7 +7,8 @@ EXPOSE 3306
 RUN apk update && apk add --no-cache mariadb mariadb-client mariadb-common
 
 # fixing permissions for MariaDB directories
-RUN mkdir -p /var/lib/mysql /run/mysqld && chown -R mysql:mysql /var/lib/mysql /run/mysqld
+RUN mkdir -p /var/lib/mysql /var/log/mysql /run/mysqld && \
+	chown -R mysql:mysql /var/lib/mysql /run/mysqld
 
 # copying the mariadb setup script and config file
 COPY ./tools/mariadb_setup.sh /usr/local/bin/mariadb_setup.sh

@@ -2,9 +2,9 @@
 
 #check if the directory exists
 
-if [ ! -d "/var/lib/mysql/mysql" ]; then
+if [ ! -d "/var/lib/mysql" ]; then
 	echo "Initializing MariaDB..."
-	mariadb-install-db --basedir=/usr--user=mysql --datadir=/var/lib/mysql
+	mariadb-install-db --user=mysql --datadir=/var/lib/mysql
 
 	# echo "Starting MariaDB..."
 	# mysqld_safe --data=var/lib/mysql & #start mariadb in the background

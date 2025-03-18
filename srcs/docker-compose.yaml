@@ -11,7 +11,7 @@ services:
         - inception_net
       restart: always
       env_file: 
-        - ".env"
+        - .env
 
   # wordpress:
   #   container_name: wordpress-cont

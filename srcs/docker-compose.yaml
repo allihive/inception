@@ -16,6 +16,7 @@ services:
 
   wordpress:
     container_name: wordpress-cont
+    image: wordpress:alli
     build: ./requirements/wordpress
     volumes: 
       - wordpress-data:/var/www/html
@@ -25,6 +26,7 @@ services:
       - .env
     networks:
       -inception_net
+    restart: always
 
   nginx:
     container_name: nginx-cont

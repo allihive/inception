@@ -31,8 +31,10 @@ RUN apk update && apk add --no-cache mariadb-client \
 		wget
 
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
+
+#copy script and make it executable
 COPY ./tools/wordpress-script.sh /tmp/wordpress-script.sh
-RUN chmod +x /tmp/wordpress-script.sh
+RUN chmod +x /tmp/wordpress-script.sh 
 
 RUN mkdir -p /var/www/wp /var/www/html
 RUN chown -R 755 /var/www/html

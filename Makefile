@@ -17,8 +17,6 @@ clean:
 	docker compose -f srcs/docker-compose.yaml down --rmi all -v
 
 fclean: clean
-	sudo rm -rf /home/alli/data/mariadb
-	sudo rm -rf /home/alli/data/wordpress
 	sudo rm -rf /home/alli/data
 	docker system prune -f --volumes
 	

@@ -39,4 +39,4 @@ RUN chmod +x /tmp/wordpress-script.sh
 RUN mkdir -p /var/www/wp /var/www/html
 RUN chown -R 755 /var/www/html
 
-ENTRYPOINT ["./tmp/wordpress-script.sh"]
+ENTRYPOINT ["/tmp/wordpress-script.sh"]

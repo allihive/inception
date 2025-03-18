@@ -13,36 +13,35 @@ services:
       env_file: 
         - ".env"
 
+  # wordpress:
+  #   container_name: wordpress-cont
+  #   image: wordpress:alli
+  #   build: ./requirements/wordpress
+  #   volumes: 
+  #     - wordpress-data:/var/www/html
+  #   depends_on:
+  #     - mariadb
+  #   env_file:
+  #     - .env
+  #   networks: 
+  #     - inception_net
+  #   restart: always
 
-  wordpress:
-    container_name: wordpress-cont
-    image: wordpress:alli
-    build: ./requirements/wordpress
-    volumes: 
-      - wordpress-data:/var/www/html
-    depends_on:
-      - mariadb
-    env_file:
-      - .env
-    networks: 
-      - inception_net
-    restart: always
-
-  nginx:
-    container_name: nginx-cont
-    image: nginx:alli
-    build: ./requirements/nginx
-    ports:
-      - "443:443" # for HHTPs
-    volumes:
-      - wordpress-data:/var/www/html
-    depends_on:
-      - wordpress
-    env_file:
-      - .env
-    networks: 
-      - inception_net
-    restart: always
+  # nginx:
+  #   container_name: nginx-cont
+  #   image: nginx:alli
+  #   build: ./requirements/nginx
+  #   ports:
+  #     - "443:443" # for HHTPs
+  #   volumes:
+  #     - wordpress-data:/var/www/html
+  #   depends_on:
+  #     - wordpress
+  #   env_file:
+  #     - .env
+  #   networks: 
+  #     - inception_net
+  #   restart: always
 
 volumes:
   mariadb-data:

@@ -1,0 +1,47 @@
+#!/bin/bash
+cd /var/www/html
+
+
+#connecting to mariadb, use database user and pass
+until mysql --host=mariadb --user=$MY_SQL_USER --password=$MYSQL_PASSWORD --execute="SELECT 1"; do #select 1 means data base is runnin
+	echo "waiting for database to start" 
+	sleep 5
+done
+
+if [ ! -f /var/www/html/wp-config.php]; then
+	echo "Downloading WP-CLI..."
+	wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
+	chmod +x usr/local/bin/wp
+
+	echo "download the wordpress files"
+	wp core download --allow-root
+
+	echo "Creating essential wordpress config file"
+	wp config create \
+		--dbname=$MYSQL_DATABASE \
+		--dbuser=$MYSQL_USER \
+		--dbpass=$MYSQL_PASSWORD \
+		--dbhost=mariadb 
+
+	echo "Installing WordPress"
+	wp core install --url=$DOMAIN_NAME --title=$WP_TITLE \
+		--admin_user=$WP_ADMIN_USERNAME \
+		--admin_password=$WP_ADMIN_PASS \
+		--admin_email=$WP_ADMIN_EMAIL \
+		--allow-root \
+		--skip-email \
+		--path=/var/www/html
+
+	echo "checking for normal user"
+	if wp user get "$WP_NORMAL_USERNAME" --allow-root; then
+		echo "User is in use"
+	else
+		wp user create \
+			"$WP_NORMAL_USERNAME" "$WUP_NORMAL_EMAIL" \
+			--user_pass=$WP_NORMAL_PASS \
+			--allow-root
+else
+	echo "Wordpress has already been set up"
+fi
+
+chown -R www-data:www-data /var/www/html

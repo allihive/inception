@@ -7,8 +7,10 @@ if test -f $CERTS_KEY; then
 
 else
 	echo "No, generating now..."
+	echo "certs_key: $CERTS_KEY"
+	echo "cert crt: $CERTS_CRT"
 	openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-		-keyout "$CERTS_KEY" -out "$CERTS_CRT" \
+		-keyout ${CERTS_KEY} -out ${CERTS_CRT} \
 		-subj "/C=FI/ST=Uusimaa/L=Helsinki/O=42/OU=Hive/CN=${DOMAIN_NAME}"
 	echo "SSL certificate generated"
 

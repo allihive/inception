@@ -7,8 +7,6 @@ if test -f $CERTS_KEY; then
 
 else
 	echo "No, generating now..."
-	echo "certs_key: $CERTS_KEY"
-	echo "cert crt: $CERTS_CRT"
 	openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 		-keyout ${CERTS_KEY} -out ${CERTS_CRT} \
 		-subj "/C=FI/ST=Uusimaa/L=Helsinki/O=42/OU=Hive/CN=${DOMAIN_NAME}"
@@ -17,8 +15,8 @@ else
 fi
 	#appends to a selfsigned conf
 echo "Adding SSL configuration"
-echo "ssl_certificate $CERTS_CRT;" >> /etc/nginx/snippets/self-signed.conf
-echo "ssl_certificate_key $CERTS_KEY;" >> /etc/nginx/snippets/self-signed.conf
+echo "ssl_certificate ${CERTS_CRT};" >> /etc/nginx/snippets/self-signed.conf
+echo "ssl_certificate_key ${CERTS_KEY};" >> /etc/nginx/snippets/self-signed.conf
 
 #creating user and adding them to a group 
 if ! id "www-data" >/dev/null 2>&1; then

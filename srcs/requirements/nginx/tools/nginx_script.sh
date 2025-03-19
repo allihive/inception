@@ -22,4 +22,4 @@ echo "ssl_certificate_key $CERTS_KEY;" >> /etc/nginx/snippets/self-signed.conf
 adduser -D -H -s /sbin/nologin -g www-data www-data
 
 echo "Starting NGINX"
-exec -g 'daemon off;'
+exec nginx -g 'daemon off;'

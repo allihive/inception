@@ -23,5 +23,4 @@ fclean: clean
 all:
 	$(NAME)
 
-
 re: fclean all

@@ -8,6 +8,8 @@ until mysql --host=mariadb --user=$MY_SQL_USER --password=$MYSQL_PASSWORD --exec
 	sleep 5
 done
 
+echo "done, checking wp-config.php"
+
 if [ ! -f /var/www/html/wp-config.php]; then
 	echo "Downloading WP-CLI..."
 	wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp

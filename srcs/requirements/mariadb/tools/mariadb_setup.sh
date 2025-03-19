@@ -24,10 +24,10 @@ FLUSH PRIVILEGES;
 ALTER USER 'root'@'%' IDENTIFIED BY "$MYSQL_ROOT_PASSWORD:";
 CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
 CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY "$MYSQL_PASSWORD";
-GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
+GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%';
 FLUSH PRIVILEGES;
 EOF
 
 echo "Starting MariaDB..."
-exec mysqld_safe --user=mysql
-# exec mysqld --defaults-file=/etc/my.cnf.d/mariadb-server.cnf --user=mysql
+# exec mysqld_safe --user=mysql
+exec mysqld --defaults-file=/etc/my.cnf.d/mariadb-server.cnf --user=mysql

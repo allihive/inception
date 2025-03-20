@@ -10,7 +10,8 @@ done
 if [ ! -f /var/www/html/wp-config.php ]; then
 	echo "Downloading WP-CLI..."
 	wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
-	chmod +x usr/local/bin/wp
+	chmod +x /usr/local/bin/wp
+	chown www-data:www-data /usr/local/bin/wp
 
 	echo "download the wordpress files"
 	wp core download --allow-root

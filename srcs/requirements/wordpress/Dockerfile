@@ -11,8 +11,9 @@ RUN apk update && apk add --no-cache mariadb-client \
 		php83-curl \
 		php83-dom \
 		php83-iconv \
-		wget \
-		addgroup -S www-data && adduser -S www-data -G www-data
+		wget
+
+RUN addgroup -S www-data && adduser -S www-data -G www-data
 
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
 

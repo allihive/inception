@@ -2,7 +2,7 @@
 cd /var/www/html
 
 #connecting to mariadb, use database user and pass
-until mysqladmin ping -h mariadb-cont -u root -p$MYSQL_ROOT_PASSWORD --silent; do #select 1 means data base is runnin
+until mysqladmin ping -h mariadb-cont -u root -p$MYSQL_ROOT_PASSWORD --silent; do
 	echo "waiting for database to start" 
 	sleep 5
 done
@@ -30,7 +30,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 		--admin_email=$WP_ADMIN_EMAIL \
 		--allow-root \
 		--skip-email \
-		# --path=/var/www/html
+		--path=/usr/local/bin/wp
 
 	echo "checking for normal user"
 	if wp user get "$WP_NORMAL_USERNAME" --allow-root; then

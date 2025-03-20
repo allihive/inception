@@ -7,7 +7,7 @@ until mysqladmin ping -h mariadb-cont -u root -p$MYSQL_ROOT_PASSWORD --silent; d
 	sleep 5
 done
 
-if [ ! -f /var/www/html/wp-config.php]; then
+if [ ! -f /var/www/html/wp-config.php ]; then
 	echo "Downloading WP-CLI..."
 	wget -q https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
 	chmod +x usr/local/bin/wp

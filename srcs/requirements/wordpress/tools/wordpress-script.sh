@@ -37,7 +37,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 		echo "User is in use"
 	else
 		wp user create \
-			"$WP_NORMAL_USERNAME" "$WUP_NORMAL_EMAIL" \
+			"$WP_NORMAL_USERNAME" "$WP_NORMAL_EMAIL" \
 			--user_pass=$WP_NORMAL_PASS \
 			--allow-root
 	fi

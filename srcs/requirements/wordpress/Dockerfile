@@ -15,7 +15,8 @@ RUN apk update && apk add --no-cache mariadb-client \
 
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
 
-RUN addgroup -S www-data && adduser -S www-data -G www-data
+RUN chown -R www-data:www-data /var/www/html
+
 #copy script and make it executable
 COPY ./tools/wordpress-script.sh /usr/local/bin/wordpress-script.sh
 RUN chmod +x /tmp/wordpress-script.sh 

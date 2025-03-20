@@ -17,4 +17,4 @@ EOF
 
 echo "Starting MariaDB..."
 exec mysqld_safe --user=mysql
-# exec mysqld --defaults-file=/etc/my.cnf.d/mariadb-server.cnf --user=mysql
+

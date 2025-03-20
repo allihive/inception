@@ -1,10 +1,5 @@
 #!/bin/sh
 
-echo "starting to run mariadb script"
-echo "mysql database: ${MYSQL_DATABASE}"
-echo "mysql USER: ${MYSQL_USER}"
-echo "mysql PASSWORD: ${MYSQL_PASSWORD}"
-
 mysqld --user=mysql --bootstrap <<EOF
 USE mysql;
 FLUSH PRIVILEGES;

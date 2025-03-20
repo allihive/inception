@@ -3,7 +3,7 @@ cd /var/www/html
 
 
 #connecting to mariadb, use database user and pass
-until mysqladmin ping -h --host=mariadb-cont --user=$MY_SQL_USER --password=$MYSQL_PASSWORD; do #select 1 means data base is runnin
+until mysqladmin ping -h mariadb-cont -u root -p$MYSQL_ROOT_PASSWORD --silent; do #select 1 means data base is runnin
 	echo "waiting for database to start" 
 	sleep 5
 done

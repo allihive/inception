@@ -1,14 +1,11 @@
 #!/bin/sh
 cd /var/www/html
 
-
 #connecting to mariadb, use database user and pass
 until mysqladmin ping -h mariadb-cont -u root -p$MYSQL_ROOT_PASSWORD --silent; do #select 1 means data base is runnin
 	echo "waiting for database to start" 
 	sleep 5
 done
-
-echo "done, checking wp-config.php"
 
 if [ ! -f /var/www/html/wp-config.php]; then
 	echo "Downloading WP-CLI..."

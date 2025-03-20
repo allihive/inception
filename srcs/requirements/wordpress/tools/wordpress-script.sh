@@ -42,6 +42,7 @@ if [ ! -f /var/www/html/wp-config.php]; then
 			"$WP_NORMAL_USERNAME" "$WUP_NORMAL_EMAIL" \
 			--user_pass=$WP_NORMAL_PASS \
 			--allow-root
+	fi
 else
 	echo "Wordpress has already been set up"
 fi

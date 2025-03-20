@@ -23,6 +23,6 @@ RUN mkdir -p /var/www/wp /var/www/html
 RUN chown -R www-data:www-data /var/www/html 
 RUN chmod -R 755 /var/www/html
 
-RUN chmod -R 755 /var/www/html
+RUN echo "memory_limit = 512M" >> /etc/php83/php.ini 
 
 ENTRYPOINT ["/usr/local/bin/wordpress-script.sh"]

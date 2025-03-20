@@ -14,12 +14,12 @@ RUN apk update && apk add --no-cache mariadb-client \
 		wget
 
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
-
-#copy script and make it executable
 COPY ./tools/wordpress-script.sh /usr/local/bin/wordpress-script.sh
+
 RUN chmod +x /usr/local/bin/wordpress-script.sh 
 
 RUN mkdir -p /var/www/wp /var/www/html
-RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html 
+RUN chmod -R 755 /var/www/html
 
 ENTRYPOINT ["/usr/local/bin/wordpress-script.sh"]

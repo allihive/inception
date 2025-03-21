@@ -3,9 +3,9 @@ DOCKERFILES = $(addprefix srcs/requirements/, mariadb/Dockerfile nginx/Dockerfil
 
 DOCKER_COMPOSE = srcs/docker-compose.yaml
 
-.PHONY: $(NAME)
+.PHONY: all up down clean fclean re
 
-$(NAME): $(DOCKER_COMPOSE)
+up: $(DOCKER_COMPOSE)
 	sudo mkdir -p /home/alli/data/mariadb
 	sudo mkdir -p /home/alli/data/wordpress
 	cd srcs && docker compose up --build -d
@@ -21,6 +21,6 @@ fclean: clean
 	docker system prune -f --volumes
 	
 all:
-	$(NAME)
+	up
 
 re: fclean all

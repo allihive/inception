@@ -15,8 +15,8 @@ else
 fi
 	#appends to a selfsigned conf
 echo "Adding SSL configuration"
-echo "ssl_certificate ${CERTS_CRT};" >> /etc/nginx/snippets/self-signed.conf
-echo "ssl_certificate_key ${CERTS_KEY};" >> /etc/nginx/snippets/self-signed.conf
+# echo "ssl_certificate ${CERTS_CRT};" >> /etc/nginx/snippets/self-signed.conf
+# echo "ssl_certificate_key ${CERTS_KEY};" >> /etc/nginx/snippets/self-signed.conf
 
 #creating user and adding them to a group 
 if ! id "www-data" >/dev/null 2>&1; then

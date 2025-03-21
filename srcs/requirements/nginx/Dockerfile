@@ -6,7 +6,7 @@ RUN apk update && apk add --no-cache nginx openssl
 
 RUN mkdir -p /etc/nginx/ssl
 
-# COPY ./conf/self-signed.conf /etc/nginx/snippets/self-signed.conf
+COPY ./conf/self-signed.conf /etc/nginx/snippets/self-signed.conf
 
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 RUN chmod 644 /etc/nginx/nginx.conf

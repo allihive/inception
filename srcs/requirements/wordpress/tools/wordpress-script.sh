@@ -44,8 +44,5 @@ else
 	echo "Wordpress has already been set up"
 fi
 
-echo "Changing ownership for default user and group"
-chown -R www-data:www-data /var/www/html
-
 echo "Running php server in the foreground"
 php-fpm83 -F

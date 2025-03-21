@@ -11,6 +11,8 @@ RUN apk update && apk add --no-cache mariadb-client \
 		php83-iconv \
 		wget
 
+RUN adduser -S www-data -g www-data
+
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
 COPY ./tools/wordpress-script.sh /usr/local/bin/wordpress-script.sh
 

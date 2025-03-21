@@ -30,7 +30,6 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 		--admin_email=$WP_ADMIN_EMAIL \
 		--allow-root \
 		--skip-email \
-		--path=/var/www/html
 
 	echo "checking for normal user"
 	if wp user get "$WP_NORMAL_USERNAME" --allow-root; then

@@ -8,11 +8,8 @@ RUN apk update && apk add --no-cache mariadb-client \
 		php83-mysqli \
 		php83-json \
 		php83-phar \
-		php83-curl \
 		php83-iconv \
 		wget
-
-RUN adduser -u 82 -S nginx -G nginx
 
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
 COPY ./tools/wordpress-script.sh /usr/local/bin/wordpress-script.sh

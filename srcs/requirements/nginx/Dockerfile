@@ -14,6 +14,4 @@ RUN chmod 644 /etc/nginx/nginx.conf
 COPY ./tools/nginx_script.sh /usr/local/bin/nginx_script.sh
 RUN chmod +x /usr/local/bin/nginx_script.sh
 
-# RUN adduser -D -H -s /sbin/nologin -g www-data -G www-data www-data
-
 ENTRYPOINT ["/usr/local/bin/nginx_script.sh"]

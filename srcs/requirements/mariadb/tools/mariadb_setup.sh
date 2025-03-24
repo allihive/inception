@@ -14,4 +14,3 @@ EOF
 
 echo "Starting MariaDB..."
 exec mysqld_safe --user=mysql
-
